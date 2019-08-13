@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yetx.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.yetx.pojo.User" >
+    <constructor >
+      <idArg column="id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="openid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="nickname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="avatar" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bgimage" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="follow_counts" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="fans_counts" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="collect_counts" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="like_counts" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, openid, nickname, avatar, bgimage, follow_counts, fans_counts, collect_counts, 
+    like_counts, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yetx.pojo.User" >
+    insert into user (id, openid, nickname, 
+      avatar, bgimage, follow_counts, 
+      fans_counts, collect_counts, like_counts, 
+      create_time)
+    values (#{id,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR}, #{bgimage,jdbcType=VARCHAR}, #{followCounts,jdbcType=INTEGER}, 
+      #{fansCounts,jdbcType=INTEGER}, #{collectCounts,jdbcType=INTEGER}, #{likeCounts,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yetx.pojo.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="avatar != null" >
+        avatar,
+      </if>
+      <if test="bgimage != null" >
+        bgimage,
+      </if>
+      <if test="followCounts != null" >
+        follow_counts,
+      </if>
+      <if test="fansCounts != null" >
+        fans_counts,
+      </if>
+      <if test="collectCounts != null" >
+        collect_counts,
+      </if>
+      <if test="likeCounts != null" >
+        like_counts,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="bgimage != null" >
+        #{bgimage,jdbcType=VARCHAR},
+      </if>
+      <if test="followCounts != null" >
+        #{followCounts,jdbcType=INTEGER},
+      </if>
+      <if test="fansCounts != null" >
+        #{fansCounts,jdbcType=INTEGER},
+      </if>
+      <if test="collectCounts != null" >
+        #{collectCounts,jdbcType=INTEGER},
+      </if>
+      <if test="likeCounts != null" >
+        #{likeCounts,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yetx.pojo.User" >
+    update user
+    <set >
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="bgimage != null" >
+        bgimage = #{bgimage,jdbcType=VARCHAR},
+      </if>
+      <if test="followCounts != null" >
+        follow_counts = #{followCounts,jdbcType=INTEGER},
+      </if>
+      <if test="fansCounts != null" >
+        fans_counts = #{fansCounts,jdbcType=INTEGER},
+      </if>
+      <if test="collectCounts != null" >
+        collect_counts = #{collectCounts,jdbcType=INTEGER},
+      </if>
+      <if test="likeCounts != null" >
+        like_counts = #{likeCounts,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yetx.pojo.User" >
+    update user
+    set openid = #{openid,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      bgimage = #{bgimage,jdbcType=VARCHAR},
+      follow_counts = #{followCounts,jdbcType=INTEGER},
+      fans_counts = #{fansCounts,jdbcType=INTEGER},
+      collect_counts = #{collectCounts,jdbcType=INTEGER},
+      like_counts = #{likeCounts,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
