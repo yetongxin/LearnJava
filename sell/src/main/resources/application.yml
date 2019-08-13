@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://123.123.123.123/sell?useSSL=false&characterEncoding=utf-8
+    username: root
+    password: password
+  jpa:
+    show-sql: true
+  redis:
+    host: 
+    port: 6379
+server:
+  servlet:
+    context-path: /sell
+  port: 8001
+wechat:
+  myAppId: 
+  myAppSecret: 
+projecturl:
+  wechatMpAuthorize: http://sellsell.natapp1.cc
+  wechatOpenAuthorize: http://sellsell.natapp1.cc
+  sell: http://sellsell.natapp1.cc
